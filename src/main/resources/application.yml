@@ -1,11 +1,21 @@
 spring:
   application:
     name: product-service
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ecomdb
-    username: AASHISH
-    password: AASHISH
-    driver-class-name: org.postgresql.Driver
+  config:
+    import: optional:configserver:http://localhost:8888
+
+
+#   importint the config server
+
+
+
+
+
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/ecomdb
+#    username: AASHISH
+#    password: AASHISH
+#    driver-class-name: org.postgresql.Driver
 
 #  jpa:
 #    database: POSTGRESQL
@@ -13,31 +23,31 @@ spring:
 #    hibernate:
 #      ddl-auto: update
 #    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:test
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-    health:
-      show-details: always
-  info:
-    env:
-      enabled: true
-info:
-  app:
-    name: JobApplication
-    description: Job app built by EmbarkX
-    version: 1.0.0
-
-
-server:
-  port: 8082
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:test
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#    health:
+#      show-details: always
+#  info:
+#    env:
+#      enabled: true
+#info:
+#  app:
+#    name: JobApplication
+#    description: Job app built by EmbarkX
+#    version: 1.0.0
+#
+#
+#server:
+#  port: 8082
