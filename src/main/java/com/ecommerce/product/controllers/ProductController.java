@@ -4,6 +4,8 @@ import com.ecommerce.product.dtos.ProductRequest;
 import com.ecommerce.product.dtos.ProductResponse;
 import com.ecommerce.product.services.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +15,11 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/products")
+@RefreshScope
 public class ProductController {
 
+    @Value("${build.version:default}")
+    private  String buidversion;
     private final ProductService productService;
 
     @GetMapping("/simulate")
@@ -65,4 +70,9 @@ public class ProductController {
     public ResponseEntity<List<ProductResponse>> searchProducts(@RequestParam String keyword) {
         return ResponseEntity.ok(productService.searchProducts(keyword));
     }
+    @GetMapping("/temp")
+    public String Meth(){
+        return buidversion;
+    }
+
 }
